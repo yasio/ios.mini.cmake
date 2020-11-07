@@ -1,4 +1,4 @@
-# The workaround for solve try_compile failed with code sign
+# The best solution for fix try_compile failed with code sign currently
 # since cmake-3.18.2, not required
 # everyting for cmake toolchain config before project(xxx) is better
 set(CMAKE_SYSTEM_NAME "iOS" CACHE STRING "The CMake system name for iOS")
