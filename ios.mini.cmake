@@ -18,7 +18,7 @@ if("${CMAKE_OSX_ARCHITECTURES}" MATCHES ".*armv7.*")
     if(NOT DEFINED CMAKE_OSX_DEPLOYMENT_TARGET 
     OR "${CMAKE_OSX_DEPLOYMENT_TARGET}" VERSION_GREATER "11.0" 
     OR "${CMAKE_OSX_DEPLOYMENT_TARGET}" VERSION_EQUAL "11.0")
-        message(STATUS "Sets iOS minimum deployment target to 10.0 for armv7")
+        message(STATUS "Forcing osx minimum deployment target to 10.0 for armv7")
         # a. armv7 maximum deployment 10.x
         # b. armv7 TLS require deployment 10.x
         set(CMAKE_OSX_DEPLOYMENT_TARGET "10.0" CACHE STRING "Minimum OS X deployment version")
@@ -33,3 +33,5 @@ endif()
 if(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET)
     set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${CMAKE_OSX_DEPLOYMENT_TARGET} CACHE STRING "Minimum iphoneos deployment version")
 endif()
+
+message(STATUS "Minimum ios deployment target is ${CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET}")
