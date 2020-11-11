@@ -27,13 +27,10 @@ else()
         set(CMAKE_OSX_DEPLOYMENT_TARGET "9.0" CACHE STRING "Minimum OS X deployment version")
     endif()
 endif()
-
 if(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET)
     set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${CMAKE_OSX_DEPLOYMENT_TARGET} CACHE STRING "Minimum iphoneos deployment version")
 endif()
-
 message(STATUS "Minimum ios deployment target is ${CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET}")
-
 
 # Sets CMAKE_SYSTEM_PROCESSOR for iphoneos and iphonesimulator
 message(STATUS "Before configure CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
@@ -43,10 +40,13 @@ if("${CMAKE_OSX_SYSROOT}" MATCHES "iphonesimulator")
     elseif("${CMAKE_OSX_ARCHITECTURES}" MATCHES "x86_64")
         set(CMAKE_SYSTEM_PROCESSOR x86_64)
     else() # Since xcode12, default arch for iphonesimulator is arm64
-        set(CMAKE_SYSTEM_PROCESSOR arm64)
+        if(${XCODE_VERSION} LESS "12.0.0")
+            set(CMAKE_SYSTEM_PROCESSOR x86_64)
+        else()
+            set(CMAKE_SYSTEM_PROCESSOR arm64)
+        endif()
     endif()
 else()
     set(CMAKE_SYSTEM_PROCESSOR arm64)
 endif()
-
 message(STATUS "After configure CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
