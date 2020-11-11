@@ -32,4 +32,18 @@ if(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET)
     set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET ${CMAKE_OSX_DEPLOYMENT_TARGET} CACHE STRING "Minimum iphoneos deployment version")
 endif()
 
+# Sets CMAKE_SYSTEM_PROCESSOR for ios
+if("${CMAKE_OSX_SYSROOT}" MATCHES "iphonesimulator")
+    if("${CMAKE_OSX_ARCHITECTURES}" MATCHES "i386")
+        set(CMAKE_SYSTEM_PROCESSOR x86_64)
+    else()
+        set(CMAKE_SYSTEM_PROCESSOR arm)
+    endif()
+    message("Generating xcode project file for iphonesimulator...")
+else()
+    set(CMAKE_SYSTEM_PROCESSOR arm)
+    message("Generating xcode project file for devices...")
+endif()
+
+# Print Minimum ios deployment target
 message(STATUS "Minimum ios deployment target is ${CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET}")
