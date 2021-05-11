@@ -1,4 +1,4 @@
-# See: https://github.com/simdsoft/ios.mini.cmake
+# See: https://github.com/yasio/ios.mini.cmake
 # The best solution for fix try_compile failed with code sign currently
 # since cmake-3.18.2, not required
 # everyting for cmake toolchain config before project(xxx) is better
