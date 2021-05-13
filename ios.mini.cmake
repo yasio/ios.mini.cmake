@@ -1,8 +1,8 @@
 # See: https://github.com/yasio/ios.mini.cmake
-# The best solution for fix try_compile failed with code sign currently
 
 set(CMAKE_SYSTEM_NAME "iOS" CACHE STRING "The CMake system name for iOS")
 
+# The best solution for fix try_compile failed with code sign currently
 # The workaround for try_compile failing with code signing
 # since cmake-3.18.2, not required
 if(CMAKE_VERSION VERSION_LESS 3.18.2)
