@@ -5,7 +5,7 @@ set(CMAKE_SYSTEM_NAME "iOS" CACHE STRING "The CMake system name for iOS")
 
 # The workaround for try_compile failing with code signing
 # since cmake-3.18.2, not required
-if(APPLE AND CMAKE_VERSION VERSION_LESS 3.18.2)
+if(CMAKE_VERSION VERSION_LESS 3.18.2)
     message(WARNING "Peforming workaround xcode attributes for try_compile when cmake.version < 3.18.2")
     set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
         "CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED"
