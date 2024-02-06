@@ -1,5 +1,7 @@
 # ios.mini.cmake
 
+!!!DEPRECATED, moved to https://github.com/yasio/yasio/blob/dev/1k/ios.cmake
+
 ## Why ios.mini.cmake
 This mini ios toolchain file fix follow issues:  
 - Fix try_compile failed when build arm dylib or dynamcic framework
